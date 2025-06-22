@@ -7,6 +7,8 @@ function loadMessages() {
   fetch(API_URL)
     .then((res) => res.json())
     .then((data) => {
+      console.log("Loaded messages:", data);
+
       messagesDiv.innerHTML = data
         .map((m) => `<p><strong>${m.name}</strong>: ${m.message}</p>`)
         .join("");
@@ -35,6 +37,7 @@ form.addEventListener("submit", (e) => {
       return res.json();
     })
     .then(() => {
+      console.log("Message submitted successfully");
       form.reset();
       loadMessages();
     })
